@@ -2,7 +2,8 @@
 
 .page {
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
-  background-image: var(--cover-image);
+  background-color: var(--background-color, #000028);
+  background-image: var(--cover-image, url("../images/cover-image-dark.png"));
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -11,72 +12,64 @@
 }
 
 .header {
+  position: relative;
   display: grid;
   grid-template-rows: 1fr min-content 1fr;
-  /* пока оставлю так, чтобы было удобно делать pixel perfect */
-  min-block-size: 668px;
-  max-block-size: 100vh;
-  /* но должно быть так */
-  /* min-height: max(100vh, 668px); */
-  padding: var(--header-padding);
-  position: relative;
+  min-height: max(100vh, var(--header-footer__min-height, 668px));
+  padding: var(--header__padding, 10px);
 }
 
-.decorated-zone__header::before,
-.decorated-zone__footer::before  {
-  content: '';
-  display: block;
+.header__decorated-zone::before,
+.footer__decorated-zone::before {
+  content: "";
   position: absolute;
-  right: 10px;
   top: 10px;
+  right: 10px;
+  display: block;
+  border-top: 1px solid var(--accent-color, #ff0070);
+  border-right: 1px solid var(--accent-color, #ff0070);
   inline-size: 25px;
   block-size: 25px;
-  border-top: 1px solid var(--accent-color);
-  border-right: 1px solid var(--accent-color);
 }
 
-
-.decorated-zone__header::after,
-.decorated-zone__footer::after {
-  content: '';
-  display: block;
+.header__decorated-zone::after,
+.footer__decorated-zone::after {
+  content: "";
   position: absolute;
-  inline-size: 25px;
-  block-size: 25px;
   bottom: 10px;
   left: 10px;
-  border-bottom: 1px solid var(--accent-color);
-  border-left: 1px solid var(--accent-color);
+  display: block;
+  border-bottom: 1px solid var(--accent-color, #ff0070);
+  border-left: 1px solid var(--accent-color, #ff0070);
+  inline-size: 25px;
+  block-size: 25px;
 }
 
 .header__rec {
-  text-transform: uppercase;
-  color: var(--accent-color);
   position: absolute;
-  font-weight: var(--font-weight__light);
-  font-family: var(--font);
-  font-size: var(--font-size);
-  line-height: 25px;
   top: 10px;
   right: 38px;
+  color: var(--accent-color, #ff0070);
+  line-height: 25px;
+  text-transform: uppercase;
 }
 
 .header__rec::before {
-  content: 'REC';
+  content: "REC";
 }
 
 .header__rec::after {
-  content: '';
-  display: block;
+  content: "";
   position: absolute;
   top: 50%;
   left: 100%;
-  transform: translate(10px, -50%);
+  display: block;
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background-color: var(--accent-color);
-  box-shadow: 0 0 4px 2px var(--accent-color);
+  box-shadow: 0 0 4px 2px var(--accent-color, #ff0070);
+  background-color: var(--accent-color, #ff0070);
+  transform: translate(10px, -50%);
 }
 
 .header__theme-menu {
@@ -88,24 +81,21 @@
 .header__theme-menu-list {
   display: flex;
   flex-direction: column;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .header__theme-menu-button {
-  padding: var(--menu-button__padding);
-  color: var(--accent-color);
-  text-transform: lowercase;
-  font-family: var(--font); 
-  font-weight: var(--font-weight__light);
-  font-size: var(--font-size);
-  line-height: var(--line-height__menu);
   border: none;
+  padding: 1.5px 13px 6px;
+  color: var(--button-color__text, #ff0070);
+  line-height: 1;
+  text-transform: lowercase;
   background: none;
-  min-block-size: var(--menu-button__button-height);
+  min-block-size: 26px;
 }
 
 .header__theme-menu-button:hover {
-  outline: 1px solid var(--button-color__outline);
+  outline: 1px solid var(--button-color__hover, rgba(255, 0, 112, 0.4));
 }
 
 .header__theme-menu-button:focus {
@@ -113,33 +103,29 @@
 }
 
 .header__theme-menu-button:focus-visible {
-  outline: none;
   border-bottom: 1px solid;
-}
-
-/* добавила также ховер для активной кнопки, чтобы не прыгал цвет обводки */
-.header__theme-menu-button_active:hover {
-  outline: 1px solid var(--accent-color);
+  outline: none;
 }
 
 .header__theme-menu-button_active {
-  outline: 1px solid var(--accent-color);
+  outline: 1px solid var(--button-color__active, #ff0070);
+  pointer-events: none;
 }
 
 .header__title {
   grid-row: 2;
-  text-shadow: 4px 4px 0 var(--accent-color);
   align-self: end;
+  text-shadow: 4px 4px 0 var(--accent-color, #ff0070);
 }
 
-.title__big {
-  color: var(--title-color);
-  text-transform: lowercase;
-  font-weight: var(--font-weight__bold);
-  font-family: var(--font);
-  font-size: var(--font-size__title);
-  line-height: var(--line-height__title);
+.header__title-big,
+.footer__title-big {
   justify-self: center;
+  color: var(--title-color, #db00ff);
+  font-weight: 700;
+  font-size: var(--font-size__title, clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem));
+  line-height: 0.83;
+  text-transform: lowercase;
 }
 
 .header__sub-title {
@@ -148,22 +134,21 @@
   align-self: center;
 }
 
+.header__title-content,
 .title__content {
-  font-family: var(--font);
-  font-size: var(--font-size);
-  line-height: var(--line-height__text);
+  font-size: inherit;
 }
 
 .title-decor {
-  color: var(--text-color__with_background);
-  background-color: var(--accent-color); 
+  color: var(--text-color__with_background, #000028);
+  background-color: var(--accent-color, #ff0070);
 }
 
 .main-content {
   display: flex;
   flex-direction: column;
-  gap: 50px;
-  padding: var(--main-content__padding);
+  gap: var(--section__gap, 50px);
+  padding: var(--main-content__padding, 40px 10px);
 }
 
 .content-section {
@@ -172,11 +157,9 @@
 }
 
 .section-title {
-  color: var(--accent-color);
-  font-family: var(--font);
-  font-size: var(--font-size);
-  line-height: var(--line-height__text);
-  font-weight: var(--font-weight__bold);
+  color: var(--article-title__color, #f1b2ce);
+  font-weight: 700;
+  font-size: inherit;
 }
 
 .article-wrapper {
@@ -185,72 +168,162 @@
   gap: 20px;
 }
 
-.article-title {
-  margin-block-end: var(--article-title__bottom-margin);
+.article__title {
+  margin-block-end: 10px;
 }
 
 .article__sub-title {
-  font-weight: var(--font-weight__light);
-  margin-block-end: var(--article-title__bottom-margin);
+  margin-block-end: 10px;
 }
 
-.article-title:has(+ .article__sub-title) {
+.article__title:has(+ .article__sub-title) {
   margin-block-end: 20px;
 }
 
-.article-text {
-  color: var(--article-text__color);
-  font-family: var(--font);
-  font-size: var(--font-size);
-  font-weight: var(--font-weight__light);
-  line-height: var(--line-height__text);
+.article__text {
+  color: var(--article-text__color, #f1b2ce);
 }
 
-.article-link {
+.article__link {
   text-decoration: none;
-  text-shadow: 2px 1px 0 var(--accent-color);
+  text-shadow: 2px 1px 0 var(--accent-color, #ff0070);
 }
 
-.article-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+.article__link:hover {
+  border-bottom: 1px solid;
 }
 
-.article-link:focus {
+.article__link:focus {
   outline: none;
 }
 
-.article-link:focus-visible {
-  outline: 1px solid var(--article-text__color);
+.article__link:focus-visible {
+  outline: 1px solid var(--article-text__color, #f1b2ce);
 }
 
-.gallery-title {
+.gallery__title {
   margin-block-end: 10px;
 }
 
 .gallery-grid {
   display: grid;
-  gap: 10px;
+  gap: var(--gallery-grid__gap, 10px);
 }
 
-.gallery-picture {
+img {
   display: block;
-  max-height: 100%;
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .footer {
   position: relative;
-  height: 400px;
-  /* пока оставлю так, чтобы было удобно делать pixel perfect */
-  min-block-size: 668px;
-  max-block-size: 100vh;
-  /* но должно быть так */
-  /* min-height: max(100vh, 668px); */
   display: grid;
+  min-height: max(100vh, var(--header-footer__min-height, 668px));
 }
 
 .footer__title {
   align-self: center;
-  text-shadow: 2px 2px 0px var(--accent-color);
+  text-shadow: 2px 2px 0px var(--accent-color, #ff0070);
+}
+
+@media (width >= 768px) {
+
+  @media (width >= 1024px) {
+    .header__theme-menu {
+      justify-self: center;
+      align-self: start;
+    }
+
+    .header__theme-menu-list {
+      flex-direction: row;
+    }
+
+    .header__sub-title {
+      width: 491px;
+    }
+
+    .article-wrapper__first-article,
+    .article-wrapper__third-article {
+      padding-left: 0;
+    }
+
+    .article-wrapper__second-article {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .article-wrapper__second-article .article-body {
+      flex-grow: 1;
+      flex-basis: 0;
+    }
+  }
+  .header__decorated-zone::before,
+  .footer__decorated-zone::before {
+    top: 20px;
+    right: 20px;
+  }
+
+  .header__decorated-zone::after,
+  .footer__decorated-zone::after {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .header__rec {
+    top: 20px;
+    right: 48px;
+  }
+
+  .header__title {
+    justify-self: start;
+    margin-left: -20px;
+  }
+
+  .header__sub-title {
+    display: block;
+    justify-self: end;
+    width: 364px;
+  }
+  .content-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .article-wrapper__first-article,
+  .article-wrapper__third-article {
+    grid-column: 2 / 4;
+    /* без этого паддинга текст не вставал по макету */
+    padding-left: 7px;
+  }
+
+  .article-wrapper__second-article {
+    grid-column: 1 / 4;
+  }
+
+  .gallery__title {
+    margin-block-end: 20px;
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery-picture__sunset {
+    grid-column: 1 / 3;
+  }
+
+  .gallery-picture__ice-cream {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+
+  .gallery-picture__tape {
+    grid-column: 1;
+    grid-row: 2 / 4;
+  }
+
+  .gallery-picture__street {
+    grid-column: 2 / 4;
+  }
 }
