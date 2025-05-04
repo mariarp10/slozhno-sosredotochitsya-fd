@@ -12,31 +12,16 @@
   --background-color: #fff1f7;
   --title-color: #ffc2e6;
   --main-text-color: #353430;
-  --text-color__with_background: var(--main-text-color, #353430);
-  --text-color__no_background: var(--main-text-color, #353430);
+  --text-color-with-background: var(--main-text-color, #353430);
+  --text-color-no-background: var(--main-text-color, #353430);
   --accent-color: #ff8dcb;
-  --button-color__text: var(--main-text-color, #353430);
-  --button-color__hover: rgba(50, 49, 45, 0.4);
-  --button-color__active: var(--main-text-color, #353430);
-  --article-text__color: var(--main-text-color, #353430);
-  --article-title__color: var(--main-text-color, #353430);
+  --button-color-text: var(--main-text-color, #353430);
+  --button-color-hover: rgba(50, 49, 45, 0.4);
+  --button-color-active: var(--main-text-color, #353430);
+  --article-text-color: var(--main-text-color, #353430);
+  --article-title-color: var(--main-text-color, #353430);
   --cover-image: url("../images/cover-image-light.png");
-}
-
-.theme-light .page {
-  /* Вам также нужно будет написать ряд подобных селекторов */
-  --background-color: #fff1f7;
-  --title-color: #ffc2e6;
-  --main-text-color: #353430;
-  --text-color__with_background: var(--main-text-color, #353430);
-  --text-color__no_background: var(--main-text-color, #353430);
-  --accent-color: #ff8dcb;
-  --button-color__text: var(--main-text-color, #353430);
-  --button-color__hover: rgba(50, 49, 45, 0.4);
-  --button-color__active: var(--main-text-color, #353430);
-  --article-text__color: var(--main-text-color, #353430);
-  --article-title__color: var(--main-text-color, #353430);
-  --cover-image: url("../images/cover-image-light.png");
+  --corners-color: var(--main-text-color, #353430);
 }
 
 .theme-light .header__rec {
@@ -48,15 +33,16 @@
     --background-color: #fff1f7;
     --title-color: #ffc2e6;
     --main-text-color: #353430;
-    --text-color__with_background: var(--main-text-color, #353430);
-    --text-color__no_background: var(--main-text-color, #353430);
+    --text-color-with-background: var(--main-text-color, #353430);
+    --text-color-no-background: var(--main-text-color, #353430);
     --accent-color: #ff8dcb;
-    --button-color__text: var(--main-text-color, #353430);
-    --button-color__hover: rgba(50, 49, 45, 0.4);
-    --button-color__active: var(--main-text-color, #353430);
-    --article-text__color: var(--main-text-color, #353430);
-    --article-title__color: var(--main-text-color, #353430);
+    --button-color-text: var(--main-text-color, #353430);
+    --button-color-hover: rgba(50, 49, 45, 0.4);
+    --button-color-active: var(--main-text-color, #353430);
+    --article-text-color: var(--main-text-color, #353430);
+    --article-title-color: var(--main-text-color, #353430);
     --cover-image: url("../images/cover-image-light.png");
+    --corners-color: var(--main-text-color, #353430);
   }
   .header__rec {
     display: none;
