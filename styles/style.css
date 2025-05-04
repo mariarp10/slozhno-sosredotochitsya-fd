@@ -131,10 +131,10 @@
 }
 
 .header__sub-title {
-  font-weight: 700;
   grid-row: 3;
   justify-self: center;
   align-self: center;
+  font-weight: 700;
 }
 
 .header__title-content,
@@ -176,8 +176,8 @@
 }
 
 .article__sub-title {
-  font-weight: 400;
   margin-block-end: 10px;
+  font-weight: 400;
 }
 
 .article__title:has(+ .article__sub-title) {
@@ -327,8 +327,8 @@
 
   .article-wrapper__columns-layout {
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .article-wrapper__columns-layout .article-body {
