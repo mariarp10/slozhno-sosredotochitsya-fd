@@ -16,7 +16,7 @@
   display: grid;
   grid-template-rows: 1fr min-content 1fr;
   height: 100vh;
-  min-height: var(--header-footer-min-height, 668px);
+  min-height: 668px;
   padding: var(--header-padding, 10px);
 }
 
@@ -229,7 +229,7 @@
   position: relative;
   display: grid;
   height: 100vh;
-  min-height: var(--header-footer-min-height, 668px);
+  min-height: 668px;
 }
 
 .footer__title {
